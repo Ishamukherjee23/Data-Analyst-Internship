@@ -1,0 +1,65 @@
+# Task 1 – Sales Data Cleaning
+
+## Objective
+The objective of this task is to clean and standardize a raw sales dataset using Google Sheets.
+
+## Dataset
+The dataset contains sales transaction information including:
+- Order ID
+- Customer Name
+- Gender
+- Country
+- Product
+- Quantity
+- Price
+- Order Date
+- Salesperson
+
+## Data Cleaning Performed
+The following cleaning steps were completed:
+
+1. Identified and handled missing values.
+2. Filled missing Quantity values using the average Quantity.
+3. Filled missing Price values using the average Price.
+4. Replaced missing Salesperson values with "Unknown".
+5. Standardized Gender values to Male/Female.
+6. Standardized Country names.
+7. Standardized Product and Customer Name text.
+8. Standardized the Order Date format.
+9. Calculated Total Sales using Quantity × Price.
+10. Identified and removed duplicate Order IDs.
+11. Standardized the column headers.
+
+## Google Sheets Formulas Used
+
+### Quantity
+`=ROUND(AVERAGE(F2:F26),0)`
+
+### Price
+`=ROUND(AVERAGE(G2:G26),0)`
+
+### Salesperson
+`=IF(I2="","Unknown",I2)`
+
+### Gender
+`=IF(OR(C2="Male",C2="male",C2="M"),"Male",IF(OR(C2="Female",C2="female",C2="F"),"Female",""))`
+
+### Country
+`=IF(LOWER(D2)="india","India",IF(OR(LOWER(D2)="usa",LOWER(D2)="united states"),"USA",IF(OR(LOWER(D2)="uk",LOWER(D2)="united kingdom"),"UK",D2)))`
+
+### Product / Customer Name
+`=PROPER(TRIM(E2))`
+
+`=PROPER(TRIM(B2))`
+
+### Total Sales
+`=F2*G2`
+
+## Final Output
+The final cleaned dataset contains standardized and validated sales records suitable for analysis and reporting.
+
+## Tools Used
+- Google Sheets
+- Spreadsheet formulas
+- Data Cleanup / Remove Duplicates
+- Pivot Tables
